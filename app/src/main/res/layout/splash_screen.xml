@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp" />
+
+    <com.github.channguyen.adv.AnimatedDotsView
+        android:id="@+id/adv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:adv___dotCount="3"
+        custom:adv___dotBlinkingColor="#FF0000"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        />
+</RelativeLayout>
