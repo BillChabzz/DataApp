@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f69988">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="3dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginBottom="0dp"
+        card_view:cardElevation="8dp"
+        card_view:contentPadding="3dp"
+        card_view:cardBackgroundColor="#fff"
+        >
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="338dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="first_name :"
+                android:id="@+id/f_name"
+                android:layout_marginTop="23dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/l_name"
+                android:layout_alignEnd="@+id/l_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="last_name :"
+                android:id="@+id/l_name"
+                android:layout_below="@+id/f_name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="email :"
+                android:id="@+id/email"
+                android:layout_below="@+id/l_name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="26dp"
+                android:layout_alignRight="@+id/l_name"
+                android:layout_alignEnd="@+id/l_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="credit_card :"
+                android:id="@+id/c_card"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="company_name :"
+                android:id="@+id/co_name"
+                android:layout_below="@+id/c_card"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="29dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="id :"
+                android:id="@+id/identity"
+                android:layout_below="@+id/co_name"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="32dp"
+                android:layout_alignRight="@+id/email"
+                android:layout_alignEnd="@+id/email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="first_n"
+                android:id="@+id/first_name_field"
+                android:layout_alignTop="@+id/f_name"
+                android:layout_toRightOf="@+id/co_name"
+                android:layout_toEndOf="@+id/co_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="l_name"
+                android:id="@+id/last_name_field"
+                android:layout_below="@+id/f_name"
+                android:layout_alignLeft="@+id/first_name_field"
+                android:layout_alignStart="@+id/first_name_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="email"
+                android:id="@+id/email_field"
+                android:layout_alignTop="@+id/email"
+                android:layout_alignLeft="@+id/last_name_field"
+                android:layout_alignStart="@+id/last_name_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="credit_card"
+                android:id="@+id/credit_field"
+                android:layout_alignTop="@+id/c_card"
+                android:layout_alignLeft="@+id/email_field"
+                android:layout_alignStart="@+id/email_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="co_name"
+                android:id="@+id/co_name_field"
+                android:layout_alignTop="@+id/co_name"
+                android:layout_alignLeft="@+id/credit_field"
+                android:layout_alignStart="@+id/credit_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="id"
+                android:id="@+id/id_field"
+                android:layout_alignBottom="@+id/identity"
+                android:layout_toRightOf="@+id/co_name"
+                android:layout_alignRight="@+id/credit_field"
+                android:layout_alignEnd="@+id/credit_field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="country"
+                android:id="@+id/country"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/c_card"
+                android:layout_alignEnd="@+id/c_card"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="country"
+                android:id="@+id/country_field"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DataApp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_firebase_recycler">FirebaseRecyclerActivity</string>
 </resources>
