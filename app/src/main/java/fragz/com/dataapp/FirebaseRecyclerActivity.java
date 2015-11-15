@@ -40,7 +40,9 @@ public class FirebaseRecyclerActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         card.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerViewAdapter<Data,DataHolder> adapter = new FirebaseRecyclerViewAdapter<Data,DataHolder>(Data.class,R.layout.activity_firebase_recycler,DataHolder.class,ref){
+        FirebaseRecyclerViewAdapter<Data,DataHolder>
+                adapter = new FirebaseRecyclerViewAdapter<Data,DataHolder>(Data.class,R.layout.activity_firebase_recycler,DataHolder.class,ref)
+        {
             @Override
         public void populateViewHolder(DataHolder dataViewHolder,Data data){
                 dataViewHolder.f_name.setText(data.getFirst_name());
