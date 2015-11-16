@@ -5,7 +5,7 @@ package fragz.com.dataapp;
  */
 public class DataHolder {
     int id;
-    String company;
+    String company_name;
     long credit_card;
     String email;
     String first_name;
@@ -13,7 +13,7 @@ public class DataHolder {
     String country;
 
     public String getCompany() {
-        return company;
+        return company_name;
     }
 
     public long getCredit_card() {
@@ -42,7 +42,7 @@ public class DataHolder {
     }
     DataHolder(int id, String company,long credit_card,String email,String country, String first_name,String last_name){
         this.id=id;
-        this.company = company;
+        this.company_name = company;
         this.country = country;
         this.credit_card = credit_card;
         this. email = email;

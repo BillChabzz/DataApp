@@ -6,11 +6,11 @@ package fragz.com.dataapp;
 public class Data {
     String company_name;
     String country;
-    String credit_card;
+    long credit_card;
     String email;
     String first_name;
     String last_name;
-    String id;
+    int id;
     public Data(){
 
     }
@@ -24,7 +24,7 @@ public class Data {
         return company_name;
     }
 
-    public String getCredit_card() {
+    public long getCredit_card() {
         return credit_card;
     }
 
@@ -36,7 +36,7 @@ public class Data {
         return first_name;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

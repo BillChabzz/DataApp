@@ -2,41 +2,43 @@ package fragz.com.dataapp;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.TextView;
+import android.view.View;
 
-import com.firebase.client.core.view.View;
 
 import java.util.List;
 
 /**
  * Created by bill on 11/13/15.
  */
-public class Myadapter extends RecyclerView.Adapter<Myadapter.DataHolderViewHolder>{
+public class Myadapter extends RecyclerView.Adapter<Myadapter.DataHolderViewHolder> {
 
-    public static class DataHolderViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
-
-        TextView companyName;
+    public static class DataHolderViewHolder extends RecyclerView.ViewHolder {
+        TextView company_name;
         TextView country;
-        TextView creditCard;
+        TextView credit_card;
         TextView email;
-        TextView firstName;
-        TextView lastName;
-        DataHolderViewHolder(View itemView) {
+        TextView last_name;
+        TextView first_name;
+        CardView cv;
+        public DataHolderViewHolder(View itemView) {
             super(itemView);
+
             cv = (CardView)itemView.findViewById(R.id.cardView);
-            firstName = (TextView)itemView.findViewById(R.id.first_name_field);
-            lastName = (TextView)itemView.findViewById(R.id.last_name_field);
+            first_name =(TextView)itemView.findViewById(R.id.first_name_field);
+            last_name = (TextView)itemView.findViewById(R.id.last_name_field);
             email = (TextView)itemView.findViewById(R.id.email_field);
-            creditCard = (TextView)itemView.findViewById(R.id.credit_field);
+            credit_card = (TextView)itemView.findViewById(R.id.credit_field);
             country = (TextView)itemView.findViewById(R.id.country_field);
-            companyName = (TextView)itemView.findViewById(R.id.co_name_field);
+            company_name = (TextView)itemView.findViewById(R.id.co_name_field);
         }
     }
-    List<DataHolder> dataObj;
 
-    Myadapter(List<DataHolder> dataObj){
-        this.dataObj = dataObj;
+    List<DataHolder> dataObject;
+    Myadapter(List<DataHolder> dataObject){
+        this.dataObject = dataObject;
     }
 
     @Override
@@ -45,30 +47,24 @@ public class Myadapter extends RecyclerView.Adapter<Myadapter.DataHolderViewHold
     }
 
     @Override
-    public JDataObjectViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.data_item, viewGroup, false);
-        JDataObjectViewHolder svh = new JDataObjectViewHolder(v);
-        return svh;
+    public DataHolderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.firebase_card_item,parent,false);
+        DataHolderViewHolder vh = new DataHolderViewHolder(v);
+        return vh;
     }
 
-
     @Override
-    public void onBindViewHolder(JDataObjectViewHolder dataObjectViewHolder, int i) {
-        dataObjectViewHolder.firstName.setText(dataObj.get(i).first_name);
-        dataObjectViewHolder.lastName.setText(dataObj.get(i).last_name);
-        dataObjectViewHolder.companyName.setText(dataObj.get(i).company_name);
-        dataObjectViewHolder.country.setText(dataObj.get(i).country);
-        dataObjectViewHolder.email.setText(dataObj.get(i).email);
-        dataObjectViewHolder.creditCard.setText(String.valueOf(dataObj.get(i).credit_card));
-//        speakerViewHolder.personName.setText(speakers.get(i).name);
-//        speakerViewHolder.personAge.setText(speakers.get(i).age);
-//        speakerViewHolder.personPhoto.setImageResource(speakers.get(i).photoId);
+    public void onBindViewHolder(DataHolderViewHolder holder, int position) {
+        holder.company_name.setText(dataObject.get(position).company_name);
+        holder.first_name.setText(dataObject.get(position).first_name);
+        holder.last_name.setText(dataObject.get(position).last_name);
+        holder.email.setText(dataObject.get(position).email);
+        holder.country.setText(dataObject.get(position).country);
+        holder.credit_card.setText(String.valueOf(dataObject.get(position).credit_card));
     }
 
     @Override
     public int getItemCount() {
-        return dataObj.size();
+        return dataObject.size();
     }
-
-
 }

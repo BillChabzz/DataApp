@@ -7,18 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
 
-import com.firebase.ui.FirebaseRecyclerViewAdapter;
 
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FirebaseRecyclerActivity extends AppCompatActivity {
 
+    Data object;
+    private List<DataHolder> data_set;
+    private RecyclerView rv;
     RecyclerView.LayoutManager mLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,58 +38,47 @@ public class FirebaseRecyclerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-    }
-    @Override
-    protected void onStart(){
-        super.onStart();
         Firebase.setAndroidContext(this);
-        final Firebase ref = new Firebase("https://leapp.firebaseio.com/");
 
-        final RecyclerView card = (RecyclerView)findViewById(R.id.recycler_view);
-        card.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        card.setLayoutManager(mLayoutManager);
 
-        FirebaseRecyclerViewAdapter<Data,DataHolder>
-                adapter = new FirebaseRecyclerViewAdapter<Data,DataHolder>(Data.class,R.layout.activity_firebase_recycler,DataHolder.class,ref)
-        {
-            @Override
-        public void populateViewHolder(DataHolder dataViewHolder,Data data){
-                dataViewHolder.f_name.setText(data.getFirst_name());
-                dataViewHolder.l_name.setText(data.getLast_name());
-                dataViewHolder.cred_num.setText(data.getCredit_card());
-                dataViewHolder.email.setText(data.getEmail());
-                dataViewHolder.id.setText(data.getId());
-                dataViewHolder.co_name.setText(data.getCompany_name());
-                dataViewHolder.country.setText(data.getCountry());
-            }
-        };
-    card.setAdapter(adapter);
-
+         rv = (RecyclerView)findViewById(R.id.recycler_view);
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        rv.setLayoutManager(lm);
+        rv.setHasFixedSize(true);
+        getData("https://leapp.firebaseio.com/");
+        initializeAdapter();
     }
+    public void initializeAdapter(){
+        Myadapter adapter = new Myadapter(data_set);
+        rv.setAdapter(adapter);
+    }
+    public void getData(String url){
+        data_set = new ArrayList<>();
+        Firebase ref = new Firebase(url);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot data : dataSnapshot.getChildren()){
+                    object = data.getValue(Data.class);
+                    data_set.add(new DataHolder(
+                            object.getId(),
+                            object.getCompany_name(),
+                            object.getCredit_card(),
+                            object.getEmail(),
+                            object.getFirst_name(),
+                            object.getFirst_name(),
+                            object.getLast_name()
 
-     public static class DataHolder extends RecyclerView.ViewHolder{
-         TextView f_name;
-         TextView l_name;
-         TextView email;
-         TextView id;
-         TextView co_name;
-         TextView cred_num;
-         TextView country;
+                    ));
+                }
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("Read failed: " + firebaseError.getMessage());
 
-
-         public DataHolder(View itemView) {
-             super(itemView);
-             f_name =(TextView)itemView.findViewById(R.id.first_name_field);
-             l_name =(TextView)itemView.findViewById(R.id.last_name_field);
-             email =(TextView)itemView.findViewById(R.id.email_field);
-             id =(TextView)itemView.findViewById(R.id.id_field);
-             co_name =(TextView)itemView.findViewById(R.id.co_name_field);
-             cred_num =(TextView)itemView.findViewById(R.id.credit_field);
-             country =(TextView)itemView.findViewById(R.id.country_field);
-         }
-     }
+            }
+        });
+    }
 
 }
