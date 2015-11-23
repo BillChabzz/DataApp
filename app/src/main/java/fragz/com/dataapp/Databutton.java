@@ -17,6 +17,11 @@ public class Databutton extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_button);
 
+        View decorView = getWindow().getDecorView();
+// Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
         Button dataButton = (Button)findViewById(R.id.data_btn);
 
         dataButton.setOnClickListener(new View.OnClickListener() {
